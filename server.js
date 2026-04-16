@@ -4,22 +4,22 @@ const PORT = process.env.PORT || 3000;
 
 // Define 16 cards
 const cards = [
-  { id: 1, text: "Move forward 3 spaces" },
-  { id: 2, text: "Go back 2 spaces" },
-  { id: 3, text: "Skip your turn" },
-  { id: 4, text: "Roll again" },
-  { id: 5, text: "Swap position with another player" },
-  { id: 6, text: "Go to start" },
-  { id: 7, text: "Advance to nearest bonus tile" },
-  { id: 8, text: "Lose 1 turn" },
-  { id: 9, text: "Move forward 5 spaces" },
-  { id: 10, text: "Go back 3 spaces" },
-  { id: 11, text: "Double your next move" },
-  { id: 12, text: "Teleport to any tile" },
-  { id: 13, text: "Draw another card" },
-  { id: 14, text: "Freeze another player" },
-  { id: 15, text: "Gain shield (ignore next penalty)" },
-  { id: 16, text: "Lose all bonuses" }
+  { ChanceCardID: 1, beschrijving: "Ga naar Start (Ontvang $200)." },
+  { ChanceCardID: 2, beschrijving: "Ga naar Kalverstraat." },
+  { ChanceCardID: 3, beschrijving: "Ga naar Neude. Als u langs Start komt, ontvangt u $200." },
+  { ChanceCardID: 4, beschrijving: "Ga verder naar het dichtstbijzijnde Nutsbedrijf." },
+  { ChanceCardID: 5, beschrijving: "Ga verder naar het dichtstbijzijnde Station." },
+  { ChanceCardID: 6, beschrijving: "Ga verder naar het dichtstbijzijnde Station." },
+  { ChanceCardID: 7, beschrijving: "Ga drie vakjes terug." },
+  { ChanceCardID: 8, beschrijving: "Ga direct naar de gevangenis. Ga niet langs Start." },
+  { ChanceCardID: 9, beschrijving: "Maak een rit naar Station Zuid. Als u langs Start komt, ontvangt u $200." },
+  { ChanceCardID: 10, beschrijving: "Ga naar de Heerestraat (Groningen). Als u langs Start komt, ontvangt u $200." },
+  { ChanceCardID: 11, beschrijving: "De bank betaalt u dividend van $50." },
+  { ChanceCardID: 12, beschrijving: "Uw bouwlening vervalt. Ontvang $150." },
+  { ChanceCardID: 13, beschrijving: "Betaal $25 per huis en $100 per hotel." },
+  { ChanceCardID: 14, beschrijving: "Betaal armenbelasting van $15." },
+  { ChanceCardID: 15, beschrijving: "U bent verkozen tot voorzitter. Betaal iedere speler $50." },
+  { ChanceCardID: 16, beschrijving: "Deze kaart mag u behouden tot u deze nodig heeft." }
 ];
 
 // Shuffle function
