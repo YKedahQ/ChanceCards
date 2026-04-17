@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Define 16 cards
+// Define 16 cards (fixed order)
 const cards = [
   { ChanceCardID: 1, beschrijving: "Ga naar Start (Ontvang $200)." },
   { ChanceCardID: 2, beschrijving: "Ga naar Kalverstraat." },
@@ -22,52 +22,27 @@ const cards = [
   { ChanceCardID: 16, beschrijving: "Deze kaart mag u behouden tot u deze nodig heeft." }
 ];
 
-// Shuffle function
-function shuffle(array) {
-  return array.sort(() => Math.random() - 0.5);
-}
-
-// API endpoint
+// API endpoint → returns CSV with shuffled ORDERID
 app.get('/generate-cards', (req, res) => {
-  const shuffled = shuffle([...cards]);
 
-  let html = `
-    <html>
-    <head>
-      <title>Random Cards</title>
-      <style>
-        table { border-collapse: collapse; width: 50%; margin: auto; }
-        th, td { border: 1px solid black; padding: 10px; text-align: center; }
-        th { background-color: #f2f2f2; }
-      </style>
-    </head>
-    <body>
-      <h2 style="text-align:center;">Randomized Cards</h2>
-      <table>
-        <tr>
-          <th>Card Number</th>
-          <th>Description</th>
-        </tr>
-  `;
+  // Create shuffled ORDERIDs (1–16)
+  const orderIds = Array.from({ length: cards.length }, (_, i) => i + 1)
+    .sort(() => Math.random() - 0.5);
 
-  shuffled.forEach(card => {
-    html += `
-      <tr>
-        <td>${card.id}</td>
-        <td>${card.text}</td>
-      </tr>
-    `;
+  // Build CSV
+  let csv = "ChanceCardID,Beschrijving,OrderID\n";
+
+  cards.forEach((card, index) => {
+    csv += `${card.ChanceCardID},"${card.beschrijving}",${orderIds[index]}\n`;
   });
 
-  html += `
-      </table>
-    </body>
-    </html>
-  `;
+  // Set CSV header
+  res.setHeader('Content-Type', 'text/csv');
 
-  res.send(html);
+  res.send(csv);
 });
 
+// Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
