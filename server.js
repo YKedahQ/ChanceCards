@@ -30,7 +30,7 @@ app.get('/generate-cards', (req, res) => {
     .sort(() => Math.random() - 0.5);
 
   // Build CSV
-  let csv = "ChanceCardID,Beschrijving,OrderID\n";
+  let csv = "ChanceCardID,Beschrijving,OrderId\n";
 
   cards.forEach((card, index) => {
     csv += `${card.ChanceCardID},"${card.beschrijving}",${orderIds[index]}\n`;
